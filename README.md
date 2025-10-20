@@ -1,5 +1,6 @@
 [![CI - Continuous Integration](https://github.com/accuser/my-cicd-project/actions/workflows/ci.yml/badge.svg)](https://github.com/accuser/my-cicd-project/actions/workflows/ci.yml)
 
+
 [![CD - Deploy to GitHub Pages](https://github.com/accuser/my-cicd-project/actions/workflows/deploy.yml/badge.svg)](https://github.com/accuser/my-cicd-project/actions/workflows/deploy.yml)
 
 # Building Your First CI/CD Pipeline with GitHub
