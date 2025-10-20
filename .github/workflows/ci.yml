@@ -1,0 +1,49 @@
+name: CI - Continuous Integration
+  
+# When should this workflow run?
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# What jobs should run?
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+
+      # Step 3: Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 4: Run linting
+      - name: Run linting
+        run: npm run lint
+
+  # This job checks for common HTML issues
+  validate-html:
+    name: Validate HTML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Validate HTML
+        run: |
+          echo "Checking HTML files..."
+          if grep -q "<!DOCTYPE html>" index.html; then
+            echo "✅ DOCTYPE found"
+          else
+            echo "❌ DOCTYPE missing"
+            exit 1
+          fi
+          echo "✅ HTML validation passed"
